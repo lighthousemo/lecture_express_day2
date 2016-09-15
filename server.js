@@ -10,7 +10,18 @@ app.use(express.static(__dirname + '/public'));
 
 app.get("/", (req, res) => {
   // render the views/index.ejs file
-  res.render("index", {contacts: contacts});
+  // console.log(req.query);
+  var contactList = contacts;
+  if(req.query.name) {
+    // filter the list of contacts
+    const name = req.query.name.toLowerCase();
+    contactList = contacts.filter(function(contact){
+      const contactName = contact.name.toLowerCase();
+      // return contacts whose name contains the string
+      return contactName.indexOf(name) !== -1;
+    });
+  }
+  res.render("index", {contacts: contactList});
 });
 
 // Start up the server
