@@ -7,7 +7,14 @@
 
   <div class="contacts">
     <!-- TODO: Display contacts here -->
-    <%= contacts.length %>
+    <%= contacts[0].name %>
+    <% contacts.forEach(function(contact) { %>
+      <div class="contact">
+        <img src="<%= contact.image_url %>"/>
+        <%= contact.name %>
+        (<%= contact.email %>)
+      </div>
+    <% }) %>
   </div>
 </body>
 </html>

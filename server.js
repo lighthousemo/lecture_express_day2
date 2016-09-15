@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 8000; // default port 8000
-const contacts = require("./contactData.js");
+var contacts = require("./contactData.js");
 
 // Load ejs files from the /views folder
 app.set("view engine", "ejs");
@@ -13,6 +13,7 @@ app.get("/", (req, res) => {
   res.render("index", {contacts: contacts});
 });
 
+// Start up the server
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}!`);
 });
