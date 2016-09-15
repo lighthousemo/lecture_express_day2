@@ -11,6 +11,8 @@
   - HTTP is a protocol (a predefined set of steps) that an HTTP client must use to connect to an HTTP server.
   - Client makes a request. Server sends a response.
 
+![](https://s3.amazonaws.com/monicao/lighthouse/20160915_HTTP.png)
+
 - Anatomy of an HTTP Request
   - Method: GET, POST, PUT, PATCH, DELETE
   - URL. Ex: http://localhost:8000/contacts?name=Bob
