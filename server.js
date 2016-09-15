@@ -1,12 +1,17 @@
 const express = require("express");
 const app = express();
+const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 8000; // default port 8000
 var contacts = require("./contactData.js");
 
+// MIDDLEWARE
 // Load ejs files from the /views folder
 app.set("view engine", "ejs");
 // Server static files (images, css, etc.) from /public folder
 app.use(express.static(__dirname + '/public'));
+// Parse application/x-www-form-urlencoded data. a.k.a. form data
+// and put it in req.body
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get("/", (req, res) => {
   console.log("GET /")
@@ -32,10 +37,14 @@ app.get("/contacts/new", (req, res) => {
 });
 
 app.post("/contacts", (req, res) => {
-  console.log("POST /contacts")
+  console.log("POST /contacts ", req.body)
   // 1. read the contact data from the request object
+  const nextId = contacts[contacts.length - 1].id + 1; // generate new id for contact
+  const contact = Object.assign(req.body, {id: nextId}) // create contact object with id
   // 2. add new contact to list of contacts
+  contacts.push(contact);
   // 3. redirect to the list of contacts (/)
+  res.redirect("/");  // response object has status code: 301, location: "/". NO HTML!
 });
 
 // Start up the server
