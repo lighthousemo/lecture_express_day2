@@ -16,7 +16,7 @@
   - URL. Ex: http://localhost:8000/contacts?name=Bob
   - POST requests also send a body (long string with data).
 
-- Anatomy aof an HTTP Response
+- Anatomy of an HTTP Response
   - Status: A number between 100-600 that indicates if the request was successful, if a crash happen on the server, etc.
   - Body: Data. Usually a long string of HTML.
 
@@ -24,4 +24,3 @@
 Links:
 
 - Express Cheat Sheet: https://gist.github.com/monicao/93094ea1d0dcd3ecbae17f43a3283350
-- 
