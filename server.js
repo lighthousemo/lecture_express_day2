@@ -9,6 +9,7 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 
 app.get("/", (req, res) => {
+  console.log("GET /")
   // render the views/index.ejs file
   // console.log(req.query);
   var contactList = contacts;
@@ -22,6 +23,19 @@ app.get("/", (req, res) => {
     });
   }
   res.render("index", {contacts: contactList});
+});
+
+app.get("/contacts/new", (req, res) => {
+  console.log("GET /contacts/new")
+  // render new.ejs to display the form
+  res.render("new");
+});
+
+app.post("/contacts", (req, res) => {
+  console.log("POST /contacts")
+  // 1. read the contact data from the request object
+  // 2. add new contact to list of contacts
+  // 3. redirect to the list of contacts (/)
 });
 
 // Start up the server
